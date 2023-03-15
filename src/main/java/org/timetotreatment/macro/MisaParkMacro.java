@@ -1,7 +1,8 @@
-package org.example.macro;
+package org.timetotreatment.macro;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.example.domain.ExerciseType;
+import org.timetotreatment.MacroUtility;
+import org.timetotreatment.domain.ExerciseType;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,7 +16,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.example.MacroUtility.sleepUntil;
+import static org.timetotreatment.MacroUtility.sleepUntil;
 
 public class MisaParkMacro
 {
@@ -28,7 +29,7 @@ public class MisaParkMacro
 
     private static final int peopleMaxNumber = 5;
     private static final String phoneNumber = "01042664380";
-    private static final String documentPath = "C:\\Users\\Main\\Desktop\\민근님.jpg";
+    private static final String documentPath = "C:\\Users\\Main\\Desktop\\서류.jpg";
     private static final String urlFormat = "https://www.hanam.go.kr/www/selectMisaParkResveWeb.do?key=7465&yyyymm=%s&misaParkCode=%s%d&listType=C#n";
     private static final String football = "FS0";
     private static final String tennisCode = "TS0";
@@ -135,9 +136,14 @@ public class MisaParkMacro
 
         WebElement submitButtonElement = new WebDriverWait(driver, Duration.ofMillis(2000)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".btns-submit a")));
         submitButtonElement.click();
+        driver.switchTo().window(formTab);
         /* END: Address */
 
-        driver.switchTo().window(formTab);
+        //WebElement zipElement = driver.findElement(By.cssSelector("#zip"));
+        //zipElement.sendKeys("12917");
+
+        //WebElement addressElement = driver.findElement(By.cssSelector("#adres"));
+        //addressElement.sendKeys("경기도 하남시 미사강변대로 55-1");
 
         WebElement documentElement = driver.findElement(By.cssSelector("#THUMB"));
         documentElement.sendKeys(documentPath);
@@ -150,7 +156,7 @@ public class MisaParkMacro
 
         if (enableSubmit)
         {
-            sleepUntil(submitTime);
+            MacroUtility.sleepUntil(submitTime);
             submitFormElement.click();
         }
 
@@ -166,6 +172,4 @@ public class MisaParkMacro
 
         driver = new ChromeDriver(chromeOptions);
     }
-
-
 }

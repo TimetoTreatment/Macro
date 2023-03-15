@@ -1,27 +1,29 @@
-package org.example;
+package org.timetotreatment;
 
-import org.example.domain.ExerciseType;
-import org.example.macro.MisaParkMacro;
+import org.timetotreatment.domain.ExerciseType;
+import org.timetotreatment.macro.MisaParkMacro;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import static org.example.MacroUtility.sleepUntil;
+import static org.timetotreatment.MacroUtility.sleepUntil;
 
 public class MacroApplication
 {
-    private static final boolean enableSubmit = true;
+    private static final boolean enableSubmit = false;
 
     /* Phase 1: 달력에서 날짜 선택하는 시각 */
     private static final LocalTime executionTime = LocalTime.of(8, 59, 59, 500 * 1_000_000);
 
     /* Phase 2: 신청하기 버튼 누르는 시각 */
-    private static final LocalTime submitTime = LocalTime.of(9, 0, 4, (500 + (int) (Math.random() * 100)) * 1_000_000);
+    private static final LocalTime submitTime = LocalTime.of(9, 0, 4, (100 + (int) (Math.random() * 100)) * 1_000_000);
 
     public static void main(String[] args)
     {
+        System.setProperty("webdriver.http.factory", "jdk-http-client");
+
         MisaParkMacro misaParkMacroTennis = new MisaParkMacro();
         MisaParkMacro misaParkMacroFootball = new MisaParkMacro();
         LocalDate currentDate = LocalDate.now();
@@ -30,11 +32,11 @@ public class MacroApplication
 
         if (enableSubmit)
         {
-            sleepUntil(executionTime);
+            MacroUtility.sleepUntil(executionTime);
         }
         else
         {
-            sleepUntil(LocalDateTime.now().plusSeconds(2));
+            MacroUtility.sleepUntil(LocalDateTime.now().plusSeconds(2));
         }
 
         /** 월요일 -> 일, 월, 화요일 예약 */

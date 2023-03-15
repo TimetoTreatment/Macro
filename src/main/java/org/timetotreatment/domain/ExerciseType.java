@@ -1,4 +1,4 @@
-package org.example.domain;
+package org.timetotreatment.domain;
 
 public enum ExerciseType
 {

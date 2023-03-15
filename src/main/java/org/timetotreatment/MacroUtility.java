@@ -1,4 +1,4 @@
-package org.example;
+package org.timetotreatment;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -51,7 +51,7 @@ public class MacroUtility
                 System.out.print(ChronoUnit.SECONDS.between(currentTime, targetDateTime) + 1 + " ");
             }
 
-            if (currentTime.isAfter(targetDateTime) && currentTime.isBefore(targetDateTime.plusSeconds(10)))
+            if (currentTime.isAfter(targetDateTime) && currentTime.isBefore(targetDateTime.plusSeconds(120)))
             {
                 break;
             }
