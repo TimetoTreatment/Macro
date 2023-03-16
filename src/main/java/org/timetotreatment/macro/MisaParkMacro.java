@@ -29,7 +29,7 @@ public class MisaParkMacro
 
     private static final int peopleMaxNumber = 5;
     private static final String phoneNumber = "01042664380";
-    private static final String documentPath = "C:\\Users\\Main\\Desktop\\서류.jpg";
+    private static final String documentPath = "C:\\Users\\Main\\Desktop\\1.jpg";
     private static final String urlFormat = "https://www.hanam.go.kr/www/selectMisaParkResveWeb.do?key=7465&yyyymm=%s&misaParkCode=%s%d&listType=C#n";
     private static final String football = "FS0";
     private static final String tennisCode = "TS0";
